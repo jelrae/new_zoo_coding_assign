@@ -13,13 +13,20 @@ def main():
     og_csv_filpath = "Newzoo Data Analyst Assignment/egs_game_ranking.csv"
 
     games_to_find = pd.read_csv(og_csv_filpath)
-
+    games_to_find["tags"] = ''
     endpoint_request_base = "https://store-content-ipv4.ak.epicgames.com/api/en-US/content/products/"
-    slug_example = "red-dead-redemption-2"
-    combined = endpoint_request_base+slug_example
-    response = requests.get(combined)
-    print(response)
-    results = json.loads(response.text)
+    # breakpoint()
+    for i, gs in enumerate(games_to_find['Game slug']):
+        print(i)
+        combined = endpoint_request_base+gs
+        response = requests.get(combined)
+        results = json.loads(response.text)
+        # breakpoint()
+        # for page in results["pages"]:
+        try:
+            games_to_find["tags"][i] = results["pages"][0]['data']['meta']['tags']
+        except KeyError:
+            games_to_find["tags"][i] = ['No tag data avalable']
     breakpoint()
 
 
