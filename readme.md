@@ -18,3 +18,7 @@ The script requires the input csv to be called 'egs_games_ranking.csv' and to be
 Output:
 
 The output is a CSV file found in the output folder called 'action_games_sorted', which shows the game title and the associated score in descending order.
+
+Extra Information:
+
+When examining the meta data, there were some cases where there was no tag data available. I looked into a few of these cases to see if there was another source I could use, but I did not find one. I could implement another solution such as trying to find them online with another scraper, but since this assignment asked to use this link, I only used the data I had available from the link. 
