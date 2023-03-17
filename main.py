@@ -2,6 +2,7 @@ import requests
 import json
 import pandas as pd
 import copy
+from tqdm import tqdm
 
 def main():
     """
@@ -27,7 +28,7 @@ def main():
     endpoint_request_base = "https://store-content-ipv4.ak.epicgames.com/api/en-US/content/products/"
 
     # Cycle through the game slugs and extract the needed information from the dict
-    for i, gs in enumerate(gdf['Game slug']):
+    for i, gs in tqdm(enumerate(gdf['Game slug'])):
         combined = endpoint_request_base+gs
         response = requests.get(combined)
         results = json.loads(response.text)
