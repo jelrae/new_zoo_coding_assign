@@ -3,6 +3,7 @@ import json
 import pandas as pd
 import copy
 from tqdm import tqdm
+import os
 
 def main():
     """
@@ -13,8 +14,11 @@ def main():
     """
 
     # Open the oritional csv and make it a pd dataframe for ease of access
-    og_csv_filpath = "Newzoo Data Analyst Assignment/egs_game_ranking.csv"
-    og_games_database = pd.read_csv(og_csv_filpath)
+    try:
+        og_csv_filpath = "Newzoo Data Analyst Assignment/egs_game_ranking.csv"
+        og_games_database = pd.read_csv(og_csv_filpath)
+    except:
+        print("There was an issue in loading the data, please check readme.")
 
     # Make a copy of the df so the original is preserved
     gdf = copy.deepcopy(og_games_database)
@@ -65,7 +69,11 @@ def main():
     action_games = gdf[gdf["Action"]==True]
 
     # Export just the game slug and the epic games rating
-    action_games.sort_values('Epic Games rating', ascending = False).to_csv('output/action_games_sorted.csv', columns =["Name", "Epic Games rating"], index=False)
+    if os.path.exists("output"):
+        action_games.sort_values('Epic Games rating', ascending = False).to_csv('output/action_games_sorted.csv', columns =["Name", "Epic Games rating"], index=False)
+    else:
+        os.makedirs("output")
+        action_games.sort_values('Epic Games rating', ascending = False).to_csv('output/action_games_sorted.csv', columns =["Name", "Epic Games rating"], index=False)
 
 if __name__ == "__main__":
     main()
