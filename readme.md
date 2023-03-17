@@ -21,4 +21,8 @@ The output is a CSV file found in the output folder called 'action_games_sorted'
 
 Extra Information:
 
-When examining the meta data, there were some cases where there was no tag data available. I looked into a few of these cases to see if there was another source I could use, but I did not find one. I could implement another solution such as trying to find them online with another scraper, but since this assignment asked to use this link, I only used the data I had available from the link. 
+When examining the meta data, there were some cases where there was no tag data available. I looked into a few of these cases to see if there was another source I could use, but I did not find one. I could implement another solution such as trying to find them online with another scraper, but since this assignment asked to use this link, I only used the data I had available from the link.
+
+Future work:
+
+Since the meta data also contains the date last updated, I would want to add in a check to see if the data had been updated since the last visit, if it hasn't been we can skip updating which would save time if the dataset was much larger.  Additionally, depending on the future use of this dataframe, I would want to add in more of the metadata, and also possibly remove the tags column and just have a boolean column for each of the game tags/genres. This could make repeated access faster and cleaner.

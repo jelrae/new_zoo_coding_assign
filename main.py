@@ -45,8 +45,8 @@ def main():
         the game tags, then getting the new ones from one of the pages, they are
          then compared and any new tags are added to the existing game tags list.
         """
+        game_tags = []
         for page in results["pages"]:
-            game_tags = []
             try:
                 new_game_tags = page['data']['meta']['tags']
                 game_tags.extend(list(set(new_game_tags) - set(game_tags)))
