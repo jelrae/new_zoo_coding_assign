@@ -9,7 +9,7 @@ The function can be run by using the command python main.py in the terminal whil
 Requirements:
 
 Packages:
-pandas, json, copy, requests
+pandas, json, copy, requests. tqdm, os
 
 Input file:
 
